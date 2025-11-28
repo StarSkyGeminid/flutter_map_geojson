@@ -78,9 +78,6 @@ class GeoJsonParser {
   /// default [Polygon] border stroke
   double? defaultPolygonBorderStroke;
 
-  /// default flag if [Polygon] is filled (default is true)
-  bool? defaultPolygonIsFilled;
-
   /// default [CircleMarker] border color
   Color? defaultCircleMarkerColor;
 
@@ -114,7 +111,6 @@ class GeoJsonParser {
     this.defaultPolygonBorderColor,
     this.defaultPolygonFillColor,
     this.defaultPolygonBorderStroke,
-    this.defaultPolygonIsFilled,
     this.defaultCircleMarkerColor,
     this.defaultCircleMarkerBorderColor,
     this.defaultCircleMarkerIsFilled,
@@ -178,11 +174,6 @@ class GeoJsonParser {
     defaultPolygonBorderColor = color;
   }
 
-  /// set default [Polygon] setting whether polygon is filled
-  set setDefaultPolygonIsFilled(bool filled) {
-    defaultPolygonIsFilled = filled;
-  }
-
   /// main GeoJson parsing function
   void parseGeoJson(Map<String, dynamic> g) {
     // set default values if they are not specified by constructor
@@ -197,7 +188,6 @@ class GeoJsonParser {
     defaultPolylineStroke ??= 3.0;
     defaultPolygonBorderColor ??= Colors.black.withOpacity(0.8);
     defaultPolygonFillColor ??= Colors.black.withOpacity(0.1);
-    defaultPolygonIsFilled ??= true;
     defaultPolygonBorderStroke ??= 1.0;
     defaultCircleMarkerColor ??= Colors.blue.withOpacity(0.25);
     defaultCircleMarkerBorderColor ??= Colors.black.withOpacity(0.8);
@@ -399,7 +389,6 @@ class GeoJsonParser {
       holePointsList: holesList,
       borderColor: defaultPolygonBorderColor!,
       color: defaultPolygonFillColor!,
-      isFilled: defaultPolygonIsFilled!,
       borderStrokeWidth: defaultPolygonBorderStroke!,
     );
   }
